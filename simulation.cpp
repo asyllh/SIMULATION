@@ -11,6 +11,7 @@ Start date 02/07/2017
 #include <cstdlib>
 #include <vector>
 #include <time.h>
+#include <cfloat>
 #include <cmath>
 #include <queue>
 #include <limits.h>
@@ -41,20 +42,17 @@ double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfSe
 	while(arrivalDate < maxSimTime){
 		r1 = ((double)rand() / (double)RAND_MAX);
 		r2 = ((double)rand() / (double)RAND_MAX);
-
+		while (r1 == 0.0 || r2 == 0.0 || r1 == 1.0 || r2 == 1.0){
+			r1 = ((double)rand() / (double)RAND_MAX);
+			r2 = ((double)rand() / (double)RAND_MAX);
+		}
 		arrivalDate += (-log(r1))/arrivalRate;
 		serviceTime = (-log(r2))/serviceRate;
-
 		serviceStartDate = max(arrivalDate, (*min_element(serversEnd.begin(), serversEnd.end())));
-
 		serviceEndDate = serviceStartDate + serviceTime;
-
 		wait = serviceStartDate - arrivalDate;
-
 		serversEnd.push_back(serviceEndDate);
-
 		serversEnd.erase(min_element(serversEnd.begin(), serversEnd.end()));
-
 		temp.push_back(arrivalDate);
 		temp.push_back(wait);
 		records.push_back(temp);
@@ -72,17 +70,14 @@ double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfSe
 		sumWaits += waits[i];
 	}
 
-	outcome = sumWaits/waits.size();
+	outcome = (sumWaits) / (waits.size());
 
 	return outcome;
-
-
 }
 
 
 
 int main(){
-
 
 	int i;
 	double solution;
@@ -94,7 +89,7 @@ int main(){
 	double warmup = 100.0;
 	double sumMeanWaits = 0.0;
 	int seed;
-	vector<int> meanWaits;
+	vector<double> meanWaits;
 
 	time_t startTime, endTime;
 	startTime = clock();
@@ -107,10 +102,8 @@ int main(){
 		sumMeanWaits += meanWaits[i];
 	}
 
-	solution = sumMeanWaits/meanWaits.size();
-
+	solution = (sumMeanWaits) / (meanWaits.size());
 	cout << "Solution: " << solution << endl;
-
 
 	endTime = clock();
 	int totalTime = (int)(((endTime - startTime) / double(CLOCKS_PER_SEC)) * 100);
