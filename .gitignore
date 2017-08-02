@@ -1,0 +1,12 @@
+#.gitignore for SIMULATION
+.vs/*
+Debug/*
+cmake-build-debug/
+.idea/
+*.sln
+*.VC.db
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+
