@@ -1,8 +1,7 @@
 /*--------------------/
 ALH
-Name of topic
-Name of Algorithm
-Start date dd/mm/yyyy
+Simulation C++ program for Geraint Palmer
+Start date 02/07/2017
 /--------------------*/
 
 #include <iostream>
