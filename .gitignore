@@ -9,4 +9,4 @@ cmake-build-debug/
 *.vcxproj.filters
 *.vcxproj.user
 *.out
-
+*.exe
