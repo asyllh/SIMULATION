@@ -77,16 +77,25 @@ double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfSe
 
 
 
-int main(){
+int main(int argc, char **argv){
+    if(argc < 6){
+        cout << "Simulation Program\n-------------------\n";
+        cout << "Arguments:\n";
+        cout << "numberOfServers(int), numberOfTrials(int), arrivalRate(double), serviceRate(double), maxSimTime(double), warmup(double)\n";
+        cout << "Example: to run simulaton with numberOfServers = 3, numberOfTrials = 20, arrivalRate = 10.0, serviceRate = 4.0, maxSimTime = 800.0, warmup = 100.0\n";
+        cout << "Enter in Terminal:  g++ -std=c++11 simulation.cpp && ./a.out 3 20 10.0 4.0 800.0 100.0" << endl;
+        exit(1);
+    }
+
 
 	int i;
 	double solution;
-	int numberOfServers = 3;
-	int numberOfTrials = 20;
-	double arrivalRate = 10.0;
-	double serviceRate = 4.0;
-	double maxSimTime = 800.0;
-	double warmup = 100.0;
+	int numberOfServers = atoi(argv[1]);
+	int numberOfTrials = atoi(argv[2]);
+	double arrivalRate = atof(argv[3]);
+	double serviceRate = atof(argv[4]);
+	double maxSimTime = atof(argv[5]);
+	double warmup = atof(argv[6]);
 	double sumMeanWaits = 0.0;
 	int seed;
 	vector<double> meanWaits;
