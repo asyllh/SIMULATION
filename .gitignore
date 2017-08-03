@@ -8,5 +8,5 @@ cmake-build-debug/
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
-
+*.out
 
