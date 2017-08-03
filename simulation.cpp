@@ -1,7 +1,7 @@
 /*--------------------/
 ALH
 Simulation C++ program for Geraint Palmer
-Start date 02/07/2017
+Start date 02/08/2017
 /--------------------*/
 
 #include <iostream>
