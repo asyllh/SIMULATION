@@ -83,7 +83,7 @@ int main(int argc, char **argv){
         cout << "Arguments:\n";
         cout << "numberOfServers(int), numberOfTrials(int), arrivalRate(double), serviceRate(double), maxSimTime(double), warmup(double)\n";
         cout << "Example: to run simulaton with numberOfServers = 3, numberOfTrials = 20, arrivalRate = 10.0, serviceRate = 4.0, maxSimTime = 800.0, warmup = 100.0\n";
-        cout << "Enter in Terminal:  g++ -std=c++11 simulation.cpp && ./a.out 3 20 10.0 4.0 800.0 100.0" << endl;
+        cout << "Enter in Terminal:  g++ -std=c++11 simulation.cpp -O3 && ./a.out 3 20 10.0 4.0 800.0 100.0" << endl;
         exit(1);
     }
 
