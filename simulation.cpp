@@ -112,10 +112,11 @@ int main(int argc, char **argv){
 	}
 
 	solution = (sumMeanWaits) / (meanWaits.size());
-	cout << "Solution: " << solution << endl;
+	//cout << "Solution: " << solution << endl;
 
 	endTime = clock();
 	int totalTime = (int)(((endTime - startTime) / double(CLOCKS_PER_SEC)) * 100);
-	cout << "CPU Time = " << totalTime << " milliseconds.\n";
+	//cout << "CPU Time = " << totalTime << " milliseconds.\n";
+	cout << totalTime << endl;
 
 }
