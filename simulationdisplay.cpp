@@ -1,7 +1,6 @@
 /*--------------------/
 ALH
-Simulation C++ program for Geraint Palmer
-Start date 02/08/2017
+Simulation DISPLAY
 /--------------------*/
 
 #include <iostream>
@@ -61,12 +60,12 @@ double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfSe
 int main(int argc, char **argv){
 	int i, seed;
 	double solution;
-	int numberOfServers = atoi(argv[1]);
-	int numberOfTrials = atoi(argv[2]);
-	double arrivalRate = atof(argv[3]);
-	double serviceRate = atof(argv[4]);
-	double maxSimTime = atof(argv[5]);
-	double warmup = atof(argv[6]);
+	int numberOfServers = 3;
+	int numberOfTrials = 20;
+	double arrivalRate = 10.0;
+	double serviceRate = 4.0;
+	double maxSimTime = 800.0;
+	double warmup = 100.0;
 	double sumMeanWaits = 0.0;
 	vector<double> meanWaits;
 
