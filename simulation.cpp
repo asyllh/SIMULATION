@@ -5,30 +5,15 @@ Start date 02/08/2017
 /--------------------*/
 
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <cstdio>
-#include <cstdlib>
 #include <vector>
-#include <time.h>
-#include <cfloat>
 #include <cmath>
-#include <queue>
-#include <limits.h>
 #include <algorithm>
-#include <iomanip> //header providing parametric manipulators
 using namespace std;
 
 double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfServers, double maxSimTime, double warmup){
 	int i;
-	double outcome;
-	double sumWaits = 0.0;
-	double r1, r2;
-	double arrivalDate = 0.0;
-	double serviceTime;
-	double serviceStartDate;
-	double serviceEndDate;
-	double wait;
+	double outcome, r1, r2, serviceTime, serviceStartDate, serviceEndDate, wait;
+	double sumWaits = 0.0, arrivalDate = 0.0;
 	vector<double> serversEnd;
 	vector<double> temp;
 	vector<double> waits;
@@ -57,7 +42,6 @@ double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfSe
 		temp.push_back(wait);
 		records.push_back(temp);
 		temp.clear();
-
 	}
 
 	for(i = 0; i < records.size(); ++i){
@@ -71,24 +55,11 @@ double runTrial(int seed, double arrivalRate, double serviceRate, int numberOfSe
 	}
 
 	outcome = (sumWaits) / (waits.size());
-
 	return outcome;
 }
 
-
-
 int main(int argc, char **argv){
-    if(argc < 6){
-        cout << "Simulation Program\n-------------------\n";
-        cout << "Arguments:\n";
-        cout << "numberOfServers(int), numberOfTrials(int), arrivalRate(double), serviceRate(double), maxSimTime(double), warmup(double)\n";
-        cout << "Example: to run simulaton with numberOfServers = 3, numberOfTrials = 20, arrivalRate = 10.0, serviceRate = 4.0, maxSimTime = 800.0, warmup = 100.0\n";
-        cout << "Enter in Terminal:  g++ -std=c++11 simulation.cpp -O3 && ./a.out 3 20 10.0 4.0 800.0 100.0" << endl;
-        exit(1);
-    }
-
-
-	int i;
+	int i, seed;
 	double solution;
 	int numberOfServers = atoi(argv[1]);
 	int numberOfTrials = atoi(argv[2]);
@@ -97,11 +68,7 @@ int main(int argc, char **argv){
 	double maxSimTime = atof(argv[5]);
 	double warmup = atof(argv[6]);
 	double sumMeanWaits = 0.0;
-	int seed;
 	vector<double> meanWaits;
-
-	time_t startTime, endTime;
-	startTime = clock();
 
 	for(seed = 0; seed < numberOfTrials; ++seed ){
 		meanWaits.push_back(runTrial(seed, arrivalRate, serviceRate, numberOfServers, maxSimTime, warmup));
@@ -110,13 +77,5 @@ int main(int argc, char **argv){
 	for(i = 0; i < meanWaits.size(); ++i){
 		sumMeanWaits += meanWaits[i];
 	}
-
 	solution = (sumMeanWaits) / (meanWaits.size());
-	//cout << "Solution: " << solution << endl;
-
-	endTime = clock();
-	double totalTime = (((endTime - startTime) / double(CLOCKS_PER_SEC)) * 100);
-	//cout << "CPU Time = " << totalTime << " milliseconds.\n";
-	cout << totalTime << endl;
-
 }
